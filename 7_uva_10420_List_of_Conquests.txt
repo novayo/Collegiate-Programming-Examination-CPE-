@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(void){
+    string stmp;
+    getline(cin, stmp);
+    int lines=stoi(stmp);
+    map<string, int> table;
+    map<string, int>::iterator it;
+    int n=0;
+    while (lines--){
+        string data;
+        getline(cin, data);
+        stringstream ss(data);
+        string out;
+        getline(ss, out, ' ');
+
+        it = table.find(out);
+        if (it == table.end()){
+            table[out] = 1;
+        }
+        else{
+            it->second++;
+        }
+    }
+
+    for (it = table.begin(); it != table.end(); it++){
+        cout << it->first << " " << it->second << endl;
+    }
+    
+    return 0;
+}
